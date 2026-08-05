@@ -134,9 +134,8 @@ print(df.columns)
 
 #Save the cleaned dataset as a new CSV.
 
-print("Save the cleaned dataset as a new CSV")
-df.to_csv("cleaned_sleep_doomscrolling_habits.csv", index=False)
-print("cleaned dataset saved successfully!")
+cleaned_file = os.path.join(current_folder, "cleaned_sleep_doomscrolling_habits.csv")
+df.to_csv(cleaned_file, index=False)
 
 
 
