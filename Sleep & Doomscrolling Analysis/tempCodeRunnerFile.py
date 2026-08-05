@@ -67,8 +67,8 @@ for column in df.columns:
 print("...................Data Cleaning..................")
 #Remove duplicate rows.
 print("Remove duplicate rows")
-df=df.drop_duplicates()
-print(df)
+df_dup=df.drop_duplicates()
+print(df_dup)
 
 #Count duplicate rows.
 print("Count duplicate rows")
@@ -96,7 +96,7 @@ numerical_columns=df_mean.select_dtypes(include="number").columns
 for col in numerical_columns:
     df_mean[col]=df_mean[col].fillna(df_mean[col].mean())
 
-print("\nMissing values after filling with Mean:")
+print("\nMissing values after filling with Median:")
 print(df_mean.isnull().sum())
 
 
@@ -333,116 +333,3 @@ print(count_record)
 print("Sum for each group")
 sum_each=df.groupby("gender")["age"].sum()
 print(sum_each)
-
-
-#Indexing
-print("\n...................Indexing................\n")
-#Select specific rows using .loc.
-print("Specific rows using .loc")
-print(df.loc[0:4, ["age","gender"]])
-
-
-#Select specific rows using .iloc.
-print("Specific rows using .iloc")
-
-#First row
-print("First row")
-print(df.iloc[0])
-
-#Third row
-print("Third row")
-print(df.iloc[2])
-
-#First Five Rows
-print("First Five Row")
-print(df.iloc[0:5])
-
-
-#Rows 10 to 20
-print("Rows 10 to 20")
-print(df.iloc[10:21])
-
-
-#Rows 0, 4 and 8
-print("Rows0, 4, and 8")
-print(df.iloc[[0, 4, 8]])
-
-
-#First 3 rows and first 2 columns
-print("First 3 rows and first 2 columns")
-print(df.iloc[0:3, 0:2])
-
-
-#Select specific columns.
-print("Select specific columns")
-
-
-#select one only column
-print("select only one column")
-print(["age"])
-
-
-#select multiple column
-print("Select multiple column")
-print([["ID", "age", "gender"]])
-
-
-#select first 3 column using iloc
-print("Select first 3 column using iolc")
-print(df.iloc[:, 0:3])
-
-
-#select 2 column using loc
-print("select 2 column using loc")
-print(df.loc[:, ["age", "gender"]])
-
-
-
-
-#String Operations
-print("\n................String Operations............\n")
-
-#Convert text to uppercase.
-print("Convert text to uppercase")
-df["gender"]=df["gender"].str.upper()
-print(df["gender"])
-
-
-#Convert text to lowercase.
-print("Convert text to lowercase")
-df["gender"]=df["gender"].str.lower()
-print(df["gender"])
-
-
-
-#Convert text to tilte case.
-print("Convert text to tilte case")
-df["gender"]=df["gender"].str.title()
-print(df["gender"])
-
-
-
-#Convert text to capitalize.
-print("Convert text to capitalize")
-df["gender"]=df["gender"].str.capitalize()
-print(df["gender"])
-
-
-
-#Remove extra spaces.
-print("Remove extra spaces")
-df["gender"]=df["gender"].str.strip()
-print(df["gender"])
-
-
-#Find rows containing a specific word.
-print("Rows containing a specific world")
-male_rows=df[df["gender"].str.contains("Male")]
-print(male_rows)
-
-
-
-#Replace text values.
-print("Replace Male with M")
-df["gender"]=df["gender"].replace("Male", "M")
-print(df["gender"])
