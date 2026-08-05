@@ -445,3 +445,69 @@ print(male_rows)
 print("Replace Male with M")
 df["gender"]=df["gender"].replace("Male", "M")
 print(df["gender"])
+
+
+
+#Mathematical Operations
+print("Mathematical Operations")
+
+df["screen_impact_score"]=(
+    df["total_daily_screen_time_hours"]* df["doomscroll_sessions_per_night"]
+)
+print(df.head())
+
+
+#Add two columns.
+print("Add two columns")
+
+df["total_doomscroll_time"]=(
+    df["doomscroll_sessions_per_night"] / 
+    df["avg_doomscroll_session_minutes"]
+)
+
+df["screen_sleep_ratio"]=(
+    df["total_daily_screen_time_hours"] / 
+    df["sleep_hours_per_night"]
+)
+
+print(df.head())
+
+
+#Subtract two columns.
+print("Subtract two column")
+df["sleep_deficit"] = (
+    8 - df["sleep_hours_per_night"]
+)
+
+
+df["screen_exercise_difference"] = (
+    df["total_daily_screen_time_hours"] -
+    (df["exercise_minutes_per_day"] / 60)
+)
+
+print(df.head())
+
+
+
+#Multiply two columns.
+print("Multiply two column")
+df["total_screen_usage"] = (
+    df["total_daily_screen_time_hours"] *
+    df["doomscroll_sessions_per_night"]
+)
+
+print(df.head())
+
+
+
+#Divide two columns.
+print("Divide two columns")
+df["screen_sleep_ratio"] = (
+    df["total_daily_screen_time_hours"] /
+    df["sleep_hours_per_night"].replace(0, 1)
+)
+
+
+
+
+
